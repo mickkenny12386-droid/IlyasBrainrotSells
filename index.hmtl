@@ -1,1 +1,155 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainrot Marketplace | Blue Edition</title>
+    <style>
+        /* Kleuren en Basis */
+        :root {
+            --bg-dark: #0a0b10;
+            --card-bg: #161b22;
+            --neon-blue: #00d2ff;
+            --deep-blue: #007bb5;
+            --text-white: #ffffff;
+        }
 
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigatiebalk */
+        nav {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
+        }
+
+        .logo { font-size: 24px; font-weight: bold; color: var(--neon-blue); text-transform: uppercase; }
+
+        .nav-buttons button {
+            background: transparent;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+            padding: 8px 15px;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-buttons button:hover {
+            background: var(--neon-blue);
+            color: black;
+        }
+
+        /* Producten Grid */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 15px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+            border-color: var(--neon-blue);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .price-tag {
+            font-size: 28px;
+            color: var(--neon-blue);
+            margin: 15px 0;
+            font-weight: bold;
+        }
+
+        .bid-btn {
+            background: linear-gradient(45deg, var(--deep-blue), var(--neon-blue));
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .bid-btn:active { transform: scale(0.98); }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Brainrot Market</div>
+        <div class="nav-buttons">
+            <button onclick="login('Verkoper')">Verkoper Login</button>
+            <button onclick="login('Directie')">Directie Panel</button>
+        </div>
+    </nav>
+
+    <header style="padding: 40px;">
+        <h1>🔥 Trending Brainrots</h1>
+        <p style="color: #8b949e;">Bied nu op de meest zeldzame items van Ohio.</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <img src="https://via.placeholder.com/300x200/000000/00d2ff?text=Gouden+Ohio+Token" alt="Item">
+            <h3>Gouden Ohio Token</h3>
+            <p>Verkocht door: <span style="color: var(--neon-blue);">SkibidiAdmin</span></p>
+            <div class="price-tag">€ <span id="bod1">25</span></div>
+            <button class="bid-btn" onclick="plaatsBod('bod1')">PLAATS BOD</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x200/000000/00d2ff?text=Mewing+Manual" alt="Item">
+            <h3>Mewing Handleiding (PDF)</h3>
+            <p>Verkocht door: <span style="color: var(--neon-blue);">SigmaSeller</span></p>
+            <div class="price-tag">€ <span id="bod2">15</span></div>
+            <button class="bid-btn" onclick="plaatsBod('bod2')">PLAATS BOD</button>
+        </div>
+    </div>
+
+    <script>
+        function plaatsBod(id) {
+            let element = document.getElementById(id);
+            let nieuwBod = parseInt(element.innerText) + 5;
+            element.innerText = nieuwBod;
+            console.log("Nieuw bod geplaatst op " + id + ": " + nieuwBod);
+        }
+
+        function login(type) {
+            alert(type + " login systeem wordt geladen... Hiervoor hebben we Firebase nodig!");
+        }
+    </script>
+
+</body>
+</html>
